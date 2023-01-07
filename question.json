@@ -1,0 +1,199 @@
+{
+  "quizData":[
+{
+      "id": 1,
+      "question": "How to delete a directory in Linux?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "ls",
+        "answer_b": "delete",
+        "answer_c": "remove",
+        "answer_d": "rmdir"
+      }],
+      "correct_answer": "rmdir",
+      "explanation": "rmdir deletes an empty directory",
+      "difficulty": "Easy",
+      "points": 1
+    },
+
+    {
+      "id": 2,
+      "question": "HTML used to ___________?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "Heading Tag",
+        "answer_b": "Paragraph Tag",
+        "answer_c": "Input Tag",
+        "answer_d": "All"
+      }],
+      "correct_answer": "All",
+      "explanation": "All tag Userd in HTML",
+      "difficulty": "Easy",
+      "points": 1
+    },
+
+    {
+      "id": 3,
+      "question": "Javascript is an _______ language?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "Object-Oriented",
+        "answer_b": "Object-Based",
+        "answer_c": "Procedural",
+        "answer_d": "Assembly"
+      }],
+      "correct_answer": "Object-Oriented",
+      "explanation": "JavaScript is an Object-oriented programming language.",
+      "difficulty": "medium",
+      "points": 1
+    
+    },
+
+    {
+      "id": 4,
+      "question": "What is ReactJS?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "server-side framework",
+        "answer_b": "user-interface framework ",
+        "answer_c": "both a and b",
+        "answer_d": "none of the above"
+      }],
+      "correct_answer": "user-interface framework",
+      "explanation": "ReactJS is a user-interface framework.",
+      "difficulty": "medium",
+      "points": 1
+    
+    },
+
+    {
+      "id":5,
+      "question":"A state in React.js is also known as?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "The Internal storage of the component",
+        "answer_b": "External storage of the component ",
+        "answer_c": "Permanent storege",
+        "answer_d": "All of the above"
+      }],
+      "correct_answer": "The Internal storage of the component",
+      "explanation": "A state in React.js is also known as the internal storage of the component.",
+      "difficulty": "hard",
+      "points": 1
+    },
+
+    {
+      "id":6,
+      "question":"In MVC, what does React.js act as?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "Model",
+        "answer_b": "Controller",
+        "answer_c": "Router",
+        "answer_d": "Middleware"
+      }],
+      "correct_answer": "Controller",
+      "explanation": "In MVC, React.js act as Controller.",
+      "difficulty": "medium",
+      "points": 1 
+    },
+
+    {
+      "id":7,
+      "question":"Total ways of defining variables in ES6 is?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "1",
+        "answer_b": "2",
+        "answer_c": "3",
+        "answer_d": "4"
+      }],
+      "correct_answer": "3",
+      "explanation": "There are three ways of defining variables in ES6: let, var and const.",
+      "difficulty": "medium",
+      "points": 1 
+    },
+
+    {
+      "id":8,
+      "question":"Choose the method with refers to the parent class in ReactJS?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "this()",
+        "answer_b": "super()",
+        "answer_c": "inherits()",
+        "answer_d": "self()"
+      }],
+      "correct_answer": "super()",
+      "explanation": "super() refers to the parent class in ReactJS.",
+      "difficulty": "medium",
+      "points": 1 
+    },
+
+    {
+      "id":9,
+      "question":"What is the functionality of a “webpack” command?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "Runs react local development server",
+        "answer_b": "transfer files all the javascript down into one file ",
+        "answer_c": "a module blunder",
+        "answer_d": "none of the above"
+    }],
+      "correct_answer": "Runs react local development server",
+      "explanation": "Webpack is a model blunder.",
+      "difficulty": "hard",
+      "points": 1 
+    },
+
+    {
+      "id":10,
+      "question":"Which company developed ReactJS?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "Apple",
+        "answer_b": "Facebook",
+        "answer_c": "Google",
+        "answer_d": "Twitter"
+      }],
+      "correct_answer": "Facebook",
+      "explanation": "ReactJS was developed by Facebook",
+      "difficulty": "Easy",
+      "points": 1 
+    },
+
+    {
+      "id":11,
+      "question":"Which of the following is used to access a function fetch()  from h1 element in JSX?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "<h1>${fetch()}</h1>",
+        "answer_b": "<h1>{fetch}</h1> ",
+        "answer_c": "<h1>${fetch}</h1>",
+        "answer_d": "<h1>{fetch()}</h1>"
+      }],
+      "correct_answer": "{fetch()}",
+      "explanation": "<h1>${fetch()}</h1>",
+      "difficulty": "hard",
+      "points": 1 
+    },
+
+    {
+      "id":12,
+      "question":"Why is ref used?",
+      "description": "delete folder",
+      "answers": [{
+        "answer_a": "to bind the functionx",
+        "answer_b": "to a call function ",
+        "answer_c": "to directly access the DOM node",
+        "answer_d": "to refer to another JS file"
+      }],
+      "correct_answer": "to directly access the DOM node",
+      "explanation": "Ref is used to directly access the DOM node.",
+      "difficulty": "Easy",
+      "points": 1 
+    }
+    
+
+  ]
+}
