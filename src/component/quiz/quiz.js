@@ -1,5 +1,4 @@
-import { Button, Card, CardContent } from '@mui/material'
-import { Box } from '@mui/system'
+import { Button, Card } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -19,7 +18,7 @@ const Quiz = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!question) {
+    if (currentQuestion.length === 0) {
       axios({
         method: 'get',
         url: ' http://localhost:3000/quizData'
@@ -28,7 +27,9 @@ const Quiz = () => {
         setCurrentQuestion(res.data)
         setQuestion(res.data[questionNo])
       })
+      return
     }
+    setQuestion(currentQuestion[questionNo])
   }, [questionNo])
 
   const handleAnsChecked = (correct_answer, option) => {
@@ -149,7 +150,7 @@ const Quiz = () => {
                   fontSize: 30,
                   fontWeight: 'bold'
                 }}
-                disabled={currentQuestion.length === questionNo}
+                disabled={currentQuestion.length-1 === questionNo}
                 onClick={onNext}
               >
                 Next

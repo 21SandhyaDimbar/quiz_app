@@ -30,8 +30,9 @@ function Question ({ currentQuestion, handleAnsChecked, showAnswer, result }) {
 
           {/********Options Dislpay Code*********/}
 
-          <Box className='li' sx={{ width: '100%', height: 320 }}>
-            {currentQuestion?.answers?.map(
+          {currentQuestion?.answers && (
+            <Box className='li' sx={{ width: '100%', height: 320 }}>
+              {currentQuestion?.answers?.map(
               ({ answer_a, answer_b, answer_c, answer_d }) => {
                 return (
                   <ul>
@@ -46,10 +47,6 @@ function Question ({ currentQuestion, handleAnsChecked, showAnswer, result }) {
                       >
                         {answer_a}
                       </Button>
-
-                      {/* <input type="radio" name={currentQuestion.id} value={choice.id}
-                                onChange={() => handleAnsChecked(choice.isCorrect) } />
-                              {choice.text} */}
                     </li>
                     <li>
                       <Button
@@ -91,7 +88,24 @@ function Question ({ currentQuestion, handleAnsChecked, showAnswer, result }) {
                 )
               }
             )}
-          </Box>
+              {/* <ul>
+                {Object.keys(currentQuestion?.answers[1])?.map(keyName => (
+                  <li key={keyName}>
+                    <Button
+                      onClick={() =>
+                        handleAnsChecked(
+                          currentQuestion?.correct_answer,
+                          keyName
+                        )
+                      }
+                    >
+                      {keyName}
+                    </Button>
+                  </li>
+                ))}
+              </ul> */}
+            </Box>
+          )}
 
           {/* Show Answer Button Code */}
           <Button
