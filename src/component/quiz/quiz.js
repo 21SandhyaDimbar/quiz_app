@@ -15,6 +15,7 @@ const Quiz = () => {
   const [items, setItems] = useState('')
   const [score, setScore] = useState(0)
   const [result, setResult] = useState('')
+  const [correctAnswer, setCorrectAnswer] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -36,26 +37,15 @@ const Quiz = () => {
     if (correct_answer === option) {
       console.log('Correct')
       setScore(score + 1)
-    } else {
-      console.log('wrong')
-      if (score) setScore(score - 1)
     }
+    setCorrectAnswer(correct_answer)
+    if (correctAnswer === correct_answer && correctAnswer !== option) {
+      setScore(score - 1)
+    }
+
+    return correct_answer === option
   }
 
-  const showAnswer = id => {
-    const item = currentQuestion.find(question => question.id === id)
-    //setCurrentQuestion({...currentQuestion,})
-    //console.log("itesms==>>>",items)
-    // setIsShow(!isShow);
-    //setResult({...items,...result});
-    setItems(item)
-
-    if (item.id) {
-      setIsShow(!isShow)
-      setItems({ ...items, isShow: isShow })
-    }
-    console.log(result, 'result')
-  }
   const onPrevious = () => {
     if (questionNo >= 1) {
       setQuestionNo(questionNo - 1)
@@ -117,8 +107,6 @@ const Quiz = () => {
               <Question
                 currentQuestion={question}
                 handleAnsChecked={handleAnsChecked}
-                showAnswer={showAnswer}
-                result={result}
               />
             )}
             {/* /))} */}
@@ -150,14 +138,14 @@ const Quiz = () => {
                   fontSize: 30,
                   fontWeight: 'bold'
                 }}
-                disabled={currentQuestion.length-1 === questionNo}
+                disabled={currentQuestion.length - 1 === questionNo}
                 onClick={onNext}
               >
                 Next
               </Button>
             </div>
             {/*Submit Button */}
-            {currentQuestion.length === questionNo && (
+            {currentQuestion.length - 1 === questionNo && (
               <div>
                 <Button
                   variant='contained'

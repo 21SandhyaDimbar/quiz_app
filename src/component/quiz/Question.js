@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Card, CardContent } from '@mui/material'
 import { Box } from '@mui/system'
-function Question ({ currentQuestion, handleAnsChecked, showAnswer, result }) {
+function Question ({ currentQuestion, handleAnsChecked, result }) {
+  const answerOptions = currentQuestion?.answers[0]
+  const [buttonColor, setSetButtonColor] = useState({
+    buttonValue: '',
+    selected: false
+  })
+  const { buttonValue, selected } = buttonColor
+  const [isCorrect, setIsCorrect] = useState(false)
+  const [show, setShow] = useState({
+    showAnswerId: '',
+    isShow: false
+  })
+  const { isShow, showAnswerId } = show
+  const showAnswer = id => {
+    setShow({ ...show, showAnswerId: id, isShow: !isShow })
+  }
   return (
     <div key={currentQuestion?.id}>
       <Card
@@ -32,78 +47,54 @@ function Question ({ currentQuestion, handleAnsChecked, showAnswer, result }) {
 
           {currentQuestion?.answers && (
             <Box className='li' sx={{ width: '100%', height: 320 }}>
-              {currentQuestion?.answers?.map(
-              ({ answer_a, answer_b, answer_c, answer_d }) => {
-                return (
-                  <ul>
-                    <li>
-                      <Button
-                        onClick={() =>
-                          handleAnsChecked(
-                            currentQuestion?.correct_answer,
-                            answer_a
-                          )
-                        }
-                      >
-                        {answer_a}
-                      </Button>
-                    </li>
-                    <li>
-                      <Button
-                        onClick={() =>
-                          handleAnsChecked(
-                            currentQuestion?.correct_answer,
-                            answer_b
-                          )
-                        }
-                      >
-                        {answer_b}
-                      </Button>
-                    </li>
-                    <li>
-                      <Button
-                        onClick={() =>
-                          handleAnsChecked(
-                            currentQuestion?.correct_answer,
-                            answer_c
-                          )
-                        }
-                      >
-                        {answer_c}
-                      </Button>
-                    </li>
-                    <li>
-                      <Button
-                        onClick={() =>
-                          handleAnsChecked(
-                            currentQuestion?.correct_answer,
-                            answer_d
-                          )
-                        }
-                      >
-                        {answer_d}
-                      </Button>
-                    </li>
-                  </ul>
-                )
-              }
-            )}
-              {/* <ul>
-                {Object.keys(currentQuestion?.answers[1])?.map(keyName => (
-                  <li key={keyName}>
-                    <Button
-                      onClick={() =>
+              <ul>
+                {Object.keys(answerOptions)?.map(keyName => (
+                  <li
+                    key={keyName}
+                    style={{
+                      backgroundColor:
+                        buttonValue === answerOptions[keyName] &&
+                        selected &&
+                        isCorrect
+                          ? 'green'
+                          : buttonValue === answerOptions[keyName] &&
+                            selected &&
+                            !isCorrect
+                          ? 'red'
+                          : 'white'
+                    }}
+                    onClick={() => {
+                      setIsCorrect(
                         handleAnsChecked(
                           currentQuestion?.correct_answer,
-                          keyName
+                          answerOptions[keyName]
                         )
-                      }
+                      )
+                      setSetButtonColor({
+                        buttonValue: answerOptions[keyName],
+                        selected: true
+                      })
+                    }}
+                  >
+                    <Button
+                      style={{
+                        color:
+                          buttonValue === answerOptions[keyName] &&
+                          selected &&
+                          isCorrect
+                            ? 'black'
+                            : buttonValue === answerOptions[keyName] &&
+                              selected &&
+                              !isCorrect
+                            ? 'black'
+                            : '#1976d2'
+                      }}
                     >
-                      {keyName}
+                      {answerOptions[keyName]}
                     </Button>
                   </li>
                 ))}
-              </ul> */}
+              </ul>
             </Box>
           )}
 
@@ -114,19 +105,19 @@ function Question ({ currentQuestion, handleAnsChecked, showAnswer, result }) {
             style={{ backgroundColor: 'green', marginTop: '20px' }}
             onClick={() => showAnswer(currentQuestion?.id)}
           >
-            {result.isShow ? 'Hide ' : 'Show '}Answer
+            {showAnswerId === currentQuestion.id && isShow ? 'Hide ' : 'Show '}
+            Answer
           </Button>
-          {/* {items?.isShow && (
-                      <>
-                        <h3 style={{ color: 'white' }}>
-                          Correct Answer: {items?.correct_answer}
-                          {console.log(items, 'result')}
-                        </h3>
-                        <h3 style={{ color: 'white' }}>
-                          Explanation: {items?.explanation}
-                        </h3>
-                      </>
-                    )} */}
+          {showAnswerId === currentQuestion.id && isShow && (
+            <>
+              <h3 style={{ color: 'white' }}>
+                Correct Answer: {currentQuestion?.correct_answer}
+              </h3>
+              <h3 style={{ color: 'white' }}>
+                Explanation: {currentQuestion?.explanation}
+              </h3>
+            </>
+          )}
         </CardContent>
       </Card>
     </div>
