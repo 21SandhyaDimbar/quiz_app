@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Card, CardContent } from '@mui/material'
 import { Box } from '@mui/system'
-function Question ({ currentQuestion, handleAnsChecked, result }) {
+function Question ({ currentQuestion, handleAnsChecked }) {
   const answerOptions = currentQuestion?.answers[0]
   const [buttonColor, setSetButtonColor] = useState({
     buttonValue: '',
@@ -17,6 +17,9 @@ function Question ({ currentQuestion, handleAnsChecked, result }) {
   const showAnswer = id => {
     setShow({ ...show, showAnswerId: id, isShow: !isShow })
   }
+  useEffect(() => {
+    setShow({ ...show, isShow: false })
+  }, [currentQuestion?.id])
   return (
     <div key={currentQuestion?.id}>
       <Card
@@ -67,7 +70,8 @@ function Question ({ currentQuestion, handleAnsChecked, result }) {
                       setIsCorrect(
                         handleAnsChecked(
                           currentQuestion?.correct_answer,
-                          answerOptions[keyName]
+                          answerOptions[keyName],
+                          currentQuestion.id
                         )
                       )
                       setSetButtonColor({

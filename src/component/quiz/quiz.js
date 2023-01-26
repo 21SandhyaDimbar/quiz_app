@@ -3,19 +3,15 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Question from './Question'
-
 import './quiz.css'
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState([])
   const [question, setQuestion] = useState('')
   const [showFinalResult, setFinalResult] = useState(false)
-  const [isShow, setIsShow] = useState(false)
   const [questionNo, setQuestionNo] = useState(0)
-  const [items, setItems] = useState('')
   const [score, setScore] = useState(0)
-  const [result, setResult] = useState('')
-  const [correctAnswer, setCorrectAnswer] = useState(false)
+  const [answersArray, setAnswersArray] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -33,16 +29,21 @@ const Quiz = () => {
     setQuestion(currentQuestion[questionNo])
   }, [questionNo])
 
-  const handleAnsChecked = (correct_answer, option) => {
-    if (correct_answer === option) {
-      console.log('Correct')
-      setScore(score + 1)
+  const handleAnsChecked = (correct_answer, option, id) => {
+    const found = answersArray.some(answer => answer.answerId === id)
+    if (found) {
+      const newStateAnswerArray = answersArray.map(answer => {
+        if (answer.answerId === id) {
+          return { ...answer, isCorrect: correct_answer === option }
+        }
+        return answer
+      })
+      setAnswersArray(newStateAnswerArray)
     }
-    setCorrectAnswer(correct_answer)
-    if (correctAnswer === correct_answer && correctAnswer !== option) {
-      setScore(score - 1)
+    if (!found) {
+      const answerObj = { answerId: id, isCorrect: correct_answer === option }
+      answersArray.push(answerObj)
     }
-
     return correct_answer === option
   }
 
@@ -59,6 +60,12 @@ const Quiz = () => {
     }
   }
   const handleSubmit = () => {
+    let count = 0
+    answersArray.map(answer => {
+      if (answer.isCorrect) {
+        count++
+}    })
+     setScore(count)
     window.alert('Quiz Submmited...')
     setFinalResult(true)
   }
